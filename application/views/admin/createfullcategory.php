@@ -8,23 +8,40 @@
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-6">
-								<form enctype="multipart/form-data" action="<?php echo base_url("ctr_admin\insertfullcatgory"); ?>" method="post">
+								<form enctype="multipart/form-data" action="<?= base_url("ctr_admin\insertfullcatgory"); ?>" method="post">
 									<?= $category; ?>
-									<?= $sub_category?>
+									<?= $sub_category;?>
+
+									<?= $result;?>
+									<?= $pagination;?>
+									<?= $total;?>
+
+
 										<!--<input type="text" id="material_sub_category_name" name="material_sub_category_name" class="form-control" required>-->
 										<div class="form-group">
-													<input type="file" id="files"  name="files[]" multiple />
+
+
 										</div>
 							</div>
 							</div>
-
+							<div class="pop">
+							</div>
 
 						<div class="form-group">
 							<output id="list"></output>
 						</div>
 						<div class="form-group">
-						<input type="submit" class="btn btn-success" value="Insert">
+						<input type="submit" class="btn btn-success" value="Insert" name="insert">
 						<a href="<?php echo base_url("ctr_admin\barang");?>" class="btn btn-warning">Cancel</a>
+						</div>
+					</form>
+					<form enctype="multipart/form-data" action="<?= base_url("ctr_admin\createfullcategory"); ?>" method="post">
+						<div class="form-group">
+							<input type="text" name="project_name" value="<?= $this->input->post("project_name"); ?>" class="form-control" placeholder="cari project">
+
+						</div>
+						<div class="form-group">
+							<input type="submit" class="btn btn-info" name="cari" value="cari">
 						</div>
 					</form>
 					</div>
@@ -64,35 +81,3 @@
 }
 
 </style>
-<script>
-	function handleFileSelect(evt) {
-		var files = evt.target.files; // FileList object
-
-		// Loop through the FileList and render image files as thumbnails.
-		for (var i = 0, f; f = files[i]; i++) {
-
-			// Only process image files.
-			if (!f.type.match('image.*')) {
-				continue;
-			}
-
-			var reader = new FileReader();
-
-			// Closure to capture the file information.
-			reader.onload = (function(theFile) {
-				return function(e) {
-					// Render thumbnail.
-					var span = document.createElement('span');
-					span.innerHTML = ['<img class="thumb" src="', e.target.result,
-														'" title="', escape(theFile.name), '"/>'].join('');
-					document.getElementById('list').insertBefore(span, null);
-				};
-			})(f);
-
-			// Read in the image file as a data URL.
-			reader.readAsDataURL(f);
-		}
-	}
-
-	document.getElementById('files').addEventListener('change', handleFileSelect, false);
-</script>

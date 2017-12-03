@@ -1,0 +1,138 @@
+/*INIT FONT*/
+@font-face {
+	font-family: PlayfairDisplay;
+	src: url('../fonts/Playfair_Display/PlayfairDisplay-Regular.ttf') format('truetype');
+}
+@font-face {
+	font-family: Quintessential;
+	src: url('../fonts/Quintessential/Quintessential-Regular.ttf') format('truetype');
+}
+
+/*INIT MAIN STYLE*/
+html{
+	background-color: #5F6062;
+}
+body{
+	background-image: url('../img/pattern.jpg');
+	background-attachment: fixed;
+	background-repeat: repeat;
+	background-size: auto;
+	background-position: left top;
+}
+.container{
+	font-family: PlayfairDisplay;
+	letter-spacing: 1px;
+	background-color: #fff;
+}
+.logo{
+	width: 300px;
+	margin: 20px auto;
+}
+
+.responsive-img{
+	width: 100%;
+	height: auto;
+}
+.title,
+a.title{
+	font-family: Quintessential;
+	font-size: 30px;
+	font-style: italic;
+	letter-spacing: 2px;
+	color: #333;
+}
+a.title:hover{
+	color: #5A5A5A;
+	text-decoration: none;
+}
+p{
+	color: #5A5A5A;
+}
+.divider{
+	width: 100%;
+	height: 1px;
+	border-top: 1px solid #eee;
+	margin: 10px 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+
+/*MENU*/
+.menu {
+	margin: 10px auto;
+	text-align: center;
+}
+.menu ul{
+	list-style: none;
+}
+.menu ul li{
+	display: inline-block;
+	margin: 5px 10px;
+}
+.menu li a{
+	color: #9A9A9A;
+}
+.menu li a:hover{
+	color: #333;
+	text-decoration: none;
+}
+
+/*CONTENT*/
+.content{
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding: 20px;
+}
+.content p a.learn-more{
+	color: #7abfd3;
+	text-decoration: none;
+}
+
+/*SOCMED*/
+.socmed{
+	padding: 20px 0;
+	margin: 10px auto;
+	text-align: center;
+}
+.socmed ul{
+	list-style: none;
+}
+.socmed ul li{
+	display: inline-block;
+	margin: 0 20px;
+}
+.socmed ul li a{
+	color: #fff;
+	font-size: 21px;
+	text-align: center;
+}
+.fa{
+	height: 33px;
+	width: 33px;
+	padding-top: 6px;
+	border-radius: 10px;
+}
+.fa-facebook{
+	background-color: #3F5896;
+}
+.fa-twitter{
+	background-color: #31A1F0;
+}
+.fa-instagram{
+	background:  
+	linear-gradient( #400080, transparent), 
+	linear-gradient( 
+		200deg, #d047d1, #ff0000,    #ffff00);
+}
+
+/*FOOTER*/
+.footer{
+	font-size: 13px;
+	text-align: center;
+	padding: 20px;
+	color: #9A9A9A;
+	background-color: #F2F2F2;
+}
