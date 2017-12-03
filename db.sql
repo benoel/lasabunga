@@ -2,7 +2,7 @@
 SQLyog Ultimate v10.42 
 MySQL - 5.5.5-10.1.21-MariaDB : Database - lasabunga
 *********************************************************************
-*/
+*/     
 
 /*!40101 SET NAMES utf8 */;
 
@@ -59,13 +59,13 @@ CREATE TABLE `material_category` (
   `category_name` varchar(255) DEFAULT NULL,
   `photo` text,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `material_category` */
 
 LOCK TABLES `material_category` WRITE;
 
-insert  into `material_category`(`category_id`,`category_name`,`photo`) values (1,'indoorrrr','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)2.jpg'),(2,'outdoor',NULL),(4,'deckingg','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)12.jpg'),(5,'DEC','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)3.jpg');
+insert  into `material_category`(`category_id`,`category_name`,`photo`) values (1,'indoorrrr','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)2.jpg'),(2,'outdoor',NULL),(4,'deckingg','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)12.jpg');
 
 UNLOCK TABLES;
 
@@ -117,16 +117,14 @@ CREATE TABLE `material_full_category` (
   `id_material_full_category` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
   `sub_category_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  `photo` text,
+  `user_id` text,
+  `project_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_material_full_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `material_full_category` */
 
 LOCK TABLES `material_full_category` WRITE;
-
-insert  into `material_full_category`(`id_material_full_category`,`category_id`,`sub_category_id`,`user_id`,`photo`) values (1,1,1,0,'upload/Alamat Kantor.jpg'),(2,1,1,0,'upload/Garis Bawah (1).jpg'),(3,1,1,0,'upload/Garis Bawah.jpg');
 
 UNLOCK TABLES;
 
@@ -158,13 +156,13 @@ CREATE TABLE `menu` (
   `menu_name` varchar(255) DEFAULT NULL,
   `menu_url` text,
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `menu` */
 
 LOCK TABLES `menu` WRITE;
 
-insert  into `menu`(`menu_id`,`menu_name`,`menu_url`) values (1,'Dashboard','ctr_admin'),(2,'Material','ctr_admin/barang'),(3,'Kategori','ctr_admin/category'),(4,'About','ctr_admin/about'),(5,'Sub Kategori','ctr_admin/sub_category'),(6,'Upload Detil Photo','ctr_admin/fullcategory');
+insert  into `menu`(`menu_id`,`menu_name`,`menu_url`) values (1,'Dashboard','ctr_admin'),(2,'Material','ctr_admin/barang'),(3,'Kategori','ctr_admin/category'),(4,'About','ctr_admin/about'),(5,'Sub Kategori','ctr_admin/sub_category'),(6,'Detil Project','ctr_admin/createfullcategory'),(7,'Project','ctr_admin/project');
 
 UNLOCK TABLES;
 
@@ -226,7 +224,7 @@ CREATE TABLE `our_company_content` (
 
 LOCK TABLES `our_company_content` WRITE;
 
-insert  into `our_company_content`(`our_company_content_id`,`body_content`,`subject_content`,`opening_content`) values (1,'PT. LASABUNGA adalah suatu perusahaan industri kayu olahan untuk lantai kayu flooring, decking, wall panel dan papan trap tangga dan jasa perusahaan khusus yang kami buat yang berfungsi secara pribadi membantu perencanaan dan supervisi dalam membangun suatu bangunan yang indah terutama lantai kayu sesuai dengan budget yang anda miliki. ','Terima kasih anda telah mengunjungi website lantai kayu PT. LASABUNGA.','Ini adalah website official kami yang selanjutnya akan memberikan berbagai macam informasi terkait dengan kegiatan yang biasanya kami lakukan. Info lebih lengkap hubungi HOTLINE dan Info Email kami.');
+insert  into `our_company_content`(`our_company_content_id`,`body_content`,`subject_content`,`opening_content`) values (1,'PT. LASABUNGA adalah suatu perusahaan industri kayu olahan untuk lantai kayu flooring, decking, wall panel dan papan trap tangga dan jasa perusahaan khusus yang kami buat yang berfungsi secara pribadi membantu perencanaan dan supervisi dalam membangun suatu bangunan yang indah terutama lantai kayu sesuai dengan budget yang anda miliki. ','PT LASABUNGA','Ini adalah website official kami yang selanjutnya akan memberikan berbagai macam informasi terkait dengan kegiatan yang biasanya kami lakukan. Info lebih lengkap hubungi HOTLINE dan Info Email kami.');
 
 UNLOCK TABLES;
 
@@ -400,6 +398,25 @@ insert  into `portfolio_picture`(`portfolio_picture_id`,`portfolio_name`,`portfo
 
 UNLOCK TABLES;
 
+/*Table structure for table `project` */
+
+DROP TABLE IF EXISTS `project`;
+
+CREATE TABLE `project` (
+  `project_id` int(11) NOT NULL AUTO_INCREMENT,
+  `project_name` varchar(255) DEFAULT NULL,
+  `photo` text,
+  PRIMARY KEY (`project_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*Data for the table `project` */
+
+LOCK TABLES `project` WRITE;
+
+insert  into `project`(`project_id`,`project_name`,`photo`) values (1,'Pembuatan Kamar Tidur Hotel Indonesiaa','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)18.jpg'),(2,'Pembuatan Kamar mandi Hotel Indonesia','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)2.jpg'),(3,'pembuatan lantai kolam renang','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)17.jpg'),(4,'pembuatan dapur pada komplek h','upload/0_LASABUNGA_INTERIOR_SUPER_02_(watermarked)3.jpg'),(5,'pembuatan tembok kayu pada pt abc','upload/0_LASABUNGA_INTERIOR_SUPER_04_(watermarked)2.jpg'),(6,'pembuatan rumah kayu pada komplek z','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)5.jpg');
+
+UNLOCK TABLES;
+
 /*Table structure for table `role` */
 
 DROP TABLE IF EXISTS `role`;
@@ -427,13 +444,13 @@ CREATE TABLE `role_menu` (
   `role_id` int(11) DEFAULT NULL,
   `menu_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_role_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `role_menu` */
 
 LOCK TABLES `role_menu` WRITE;
 
-insert  into `role_menu`(`id_role_menu`,`role_id`,`menu_id`) values (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6);
+insert  into `role_menu`(`id_role_menu`,`role_id`,`menu_id`) values (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6),(7,1,7);
 
 UNLOCK TABLES;
 
@@ -454,7 +471,7 @@ CREATE TABLE `slider_big` (
 
 LOCK TABLES `slider_big` WRITE;
 
-insert  into `slider_big`(`slider_big_id`,`filename`,`number`,`subject`,`content`) values (1,'asset/welcome/img/ubin-1.jpg',1,'Lantai Kamar Yang Manis & Menawan','Lantai kayu terpasang dengan rapih dan bahan yang berkualitas'),(2,'asset/welcome/img/ubin-2.jpg',2,'Lantai kayu untuk pemanis kamar anda','Lantai kami mempunyai kualitas terbaik untuk membuat kamar anda terasa nyaman'),(3,'asset/welcome/img/ubin-3.jpg',3,'Lantai Perhotelan Elegan','Lantai kayu pada kamar hotel yang kami design dengan sedemikian rapih dan elegan');
+insert  into `slider_big`(`slider_big_id`,`filename`,`number`,`subject`,`content`) values (1,'upload/0 LASABUNGA INTERIOR SUPER 02 (watermarked).jpg',1,'Lantai Kamar Yang Manis & Menawan','Lantai kayu terpasang dengan rapih dan bahan yang berkualitas'),(2,'upload/0 LASABUNGA INTERIOR SUPER 03 (watermark).jpg',2,'Lantai kayu untuk pemanis kamar anda','Lantai kami mempunyai kualitas terbaik untuk membuat kamar anda terasa nyaman'),(3,'upload/0 LASABUNGA INTERIOR SUPER 04 (watermarked).jpg',3,'Lantai Perhotelan Elegan','Lantai kayu pada kamar hotel yang kami design dengan sedemikian rapih dan elegan');
 
 UNLOCK TABLES;
 

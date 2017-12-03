@@ -548,7 +548,13 @@ class Mdl_Admin extends CI_Model {
 						</table>';
 
 		}else{
-			$output = "Data Kosong";
+			$output = '<div class="form-group">
+										<label class="form-control">Data Kosong</label>
+									</div>
+									<div class="form-group">
+											<a href="'.base_url("ctr_admin/createabout").'" class="btn btn-info">Buat Content About</a>
+									</div>
+									';
 		}
 		return $output;
 	}

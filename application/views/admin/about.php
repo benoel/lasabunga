@@ -12,7 +12,7 @@
 							</form>
 							</br>
 							<?= $result ? $result : ""; ?>
-							<a href ="<?= base_url("ctr_admin/createsubcategory"); ?>" class="btn btn-xs btn-success pull-right"><span class="lnr lnr-file-add"></span> Tambahkan Kategori</a>
+							
 						</div>
 					</div>
 			</div>

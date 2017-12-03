@@ -761,4 +761,32 @@ class Ctr_Admin extends CI_Controller {
 			}
 		}
 	}
+
+	public function insertabout(){
+		if($this->session->userdata("email")==""){
+			redirect('ctr_admin/index');
+		}else{
+
+
+			$data = array(	"subject_content" => $this->input->post("subject_content"),
+											"body_content" => $this->input->post("body_content")
+						);
+
+			if($this->mdl_admin->insert('our_company_content',$data)==false){
+				echo "Update Data Gagal, silahkan coba kembali";die();
+			}else{
+				redirect("ctr_admin/about");
+			}
+		}
+	}
+	public function createabout(){
+		if($this->session->userdata("email")==""){
+			redirect('ctr_admin/index');
+		}else{
+			$result_menu = array("menu" => $this->session->userdata("menu"));
+			$this->load->view('admin/header',$result_menu);
+			$this->load->view("admin/createabout");
+			$this->load->view('admin/footer');
+		}
+	}
 }
