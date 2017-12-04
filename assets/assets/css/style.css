@@ -13,11 +13,14 @@ html{
 	background-color: #5F6062;
 }
 body{
-	background-image: url('../img/pattern.jpg');
+	background-image: url('../img/andrew-ridley-76547.png');
 	background-attachment: fixed;
 	background-repeat: repeat;
 	background-size: auto;
 	background-position: left top;
+}
+a:hover{
+	text-decoration: none;
 }
 .container{
 	font-family: PlayfairDisplay;
@@ -75,7 +78,8 @@ ul{
 .menu li a{
 	color: #9A9A9A;
 }
-.menu li a:hover{
+.menu li a:hover,
+.menu li a.active{
 	color: #333;
 	text-decoration: none;
 }
@@ -89,6 +93,9 @@ ul{
 .content p a.learn-more{
 	color: #7abfd3;
 	text-decoration: none;
+}
+.cover{
+	margin-bottom: 30px;
 }
 
 /*SOCMED*/
@@ -134,5 +141,19 @@ ul{
 	text-align: center;
 	padding: 20px;
 	color: #9A9A9A;
-	background-color: #F2F2F2;
+	background-color: #D4CCC6;
+	/*background-color: #F2F2F2;*/
+}
+
+
+/*BTN*/
+.btn{
+	border-radius: 0;
+}
+
+/*FORM*/
+.form-control:focus{
+	border-color: #333;
+	outline: 0;
+	box-shadow: none;
 }
