@@ -2,7 +2,8 @@
 SQLyog Ultimate v10.42 
 MySQL - 5.5.5-10.1.21-MariaDB : Database - lasabunga
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -57,15 +58,14 @@ DROP TABLE IF EXISTS `material_category`;
 CREATE TABLE `material_category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) DEFAULT NULL,
-  `photo` text,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `material_category` */
 
 LOCK TABLES `material_category` WRITE;
 
-insert  into `material_category`(`category_id`,`category_name`,`photo`) values (1,'indoorrrr','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)2.jpg'),(2,'outdoor',NULL),(4,'deckingg','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)12.jpg'),(5,'DEC','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)3.jpg');
+insert  into `material_category`(`category_id`,`category_name`) values (1,'indoor'),(2,'outdoor'),(3,'decking');
 
 UNLOCK TABLES;
 
@@ -99,13 +99,13 @@ CREATE TABLE `material_detail` (
   `material_desc` text,
   `category_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`material_detail_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 /*Data for the table `material_detail` */
 
 LOCK TABLES `material_detail` WRITE;
 
-insert  into `material_detail`(`material_detail_id`,`material_name`,`material_subject`,`photo`,`material_desc`,`category_id`) values (1,'Lantai Kayu Merbau','aaaaa','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)9.jpg','Ukuran Standard : 1.5 cm x 9 cm x 30 - 90 cm (int 50mm, panjang acak)',1),(2,'Lantai kayu Jati','Jati Solid','upload/0_LASABUNGA_INTERIOR_SUPER_01_(watermarked)3.jpg','Ukuran Standard : 1.5 cm x 9 cm x 30 - 90 cm (int 50mm, panjang acak)',1),(3,'Jati Solid Jumbo','Jati Solid Jumbo','upload/0_LASABUNGA_INTERIOR_SUPER_02_(watermarked).jpg','Ukuran product : 1.5 cm x 9 cm x 120 cm (int 50mm, panjang acak)\r\nFinishing : UV coating warna natural\r\nKualitas : Grade A (standart & better)\r\nHarga : M2\r\n\r\n',2),(4,'Papan Trap Tangga','Papan Trap Tangga Merbau FJL','assets/welcome/img/trap-tangga-merbau-fjl.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas : Grade A (standart & better)\r\nHarga : PCS',2),(5,'Papan Bordes Tangga','Bordes Tangga Merbau FJL','assets/welcome/img/trap-tangga-merbau-fjll.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas  : Grade A (standart & better)\r\nHarga : M2',3),(6,'Papan Trap Tangga Sonokeling FJL','Papan Trap Tangga Sonokeling FJL','assets/welcome/img/trap-tangga-sonokeling-fjl.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas : Grade A (standart & better)\r\nHarga : PCS',1),(7,'kayu 12','abc','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)2.jpg','sdasd',NULL),(9,'kayu 13','aaaaa','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)4.jpg','asdasda',NULL),(11,'kayu 13','abc','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)7.jpg','rodhi',NULL),(12,'haj','ho','upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)8.jpg','sadasd',NULL),(13,'filename','daa','','oo',NULL),(14,'jap','ss','','ad',NULL),(15,'pl','ss','upload/0_LASABUNGA_INTERIOR_SUPER_02_(watermarked)2.jpg','as',NULL),(16,'decking',NULL,'upload/0_LASABUNGA_INTERIOR_SUPER_07_(watermarked)10.jpg',NULL,NULL);
+insert  into `material_detail`(`material_detail_id`,`material_name`,`material_subject`,`photo`,`material_desc`,`category_id`) values (1,'Lantai Kayu Merbau','Merbau Solid','assets/welcome/img/merbau-solid-standard.jpg','Ukuran Standard : 1.5 cm x 9 cm x 30 - 90 cm (int 50mm, panjang acak)',1),(2,'Lantai kayu Jati','Jati Solid','assets/welcome/img/Jati-Solid-Unijoint.jpg','Ukuran Standard : 1.5 cm x 9 cm x 30 - 90 cm (int 50mm, panjang acak)',1),(3,'Jati Solid Jumbo','Jati Solid Jumbo','assets/welcome/img/Jati-Solid-Jumbo.jpg','Ukuran product : 1.5 cm x 9 cm x 120 cm (int 50mm, panjang acak)\r\nFinishing : UV coating warna natural\r\nKualitas : Grade A (standart & better)\r\nHarga : M2\r\n\r\n',2),(4,'Papan Trap Tangga','Papan Trap Tangga Merbau FJL','assets/welcome/img/trap-tangga-merbau-fjl.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas : Grade A (standart & better)\r\nHarga : PCS',2),(5,'Papan Bordes Tangga','Bordes Tangga Merbau FJL','assets/welcome/img/trap-tangga-merbau-fjll.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas  : Grade A (standart & better)\r\nHarga : M2',3),(6,'Papan Trap Tangga Sonokeling FJL','Papan Trap Tangga Sonokeling FJL','assets/welcome/img/trap-tangga-sonokeling-fjl.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas : Grade A (standart & better)\r\nHarga : PCS',1),(7,'Bordes Tangga Sonokeling FJL','Bordes Tangga Sonokeling FJL','assets/welcome/img/trap-tangga-sonokeling-fjll.jpg','Ukuran : 3cm x 32cm x 110cm\r\nFinishing : UV coating warna natural (coating on face&sealer on back)\r\nKualitas : Grade A (standart & better)\r\nHarga : M2',1);
 
 UNLOCK TABLES;
 
@@ -117,16 +117,16 @@ CREATE TABLE `material_full_category` (
   `id_material_full_category` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) DEFAULT NULL,
   `sub_category_id` int(11) DEFAULT NULL,
+  `material_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `photo` text,
   PRIMARY KEY (`id_material_full_category`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `material_full_category` */
 
 LOCK TABLES `material_full_category` WRITE;
 
-insert  into `material_full_category`(`id_material_full_category`,`category_id`,`sub_category_id`,`user_id`,`photo`) values (1,1,1,0,'upload/Alamat Kantor.jpg'),(2,1,1,0,'upload/Garis Bawah (1).jpg'),(3,1,1,0,'upload/Garis Bawah.jpg');
+insert  into `material_full_category`(`id_material_full_category`,`category_id`,`sub_category_id`,`material_id`,`user_id`) values (1,1,1,1,1);
 
 UNLOCK TABLES;
 
@@ -137,15 +137,14 @@ DROP TABLE IF EXISTS `material_sub_category`;
 CREATE TABLE `material_sub_category` (
   `material_sub_category_id` int(11) NOT NULL AUTO_INCREMENT,
   `material_sub_category_name` varchar(255) DEFAULT NULL,
-  `photo` text,
   PRIMARY KEY (`material_sub_category_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `material_sub_category` */
 
 LOCK TABLES `material_sub_category` WRITE;
 
-insert  into `material_sub_category`(`material_sub_category_id`,`material_sub_category_name`,`photo`) values (1,'kamar tidur','upload/0_LASABUNGA_INTERIOR_SUPER_01_(watermarked)9.jpg'),(2,'kamar mandi','upload/0_LASABUNGA_INTERIOR_SUPER_04_(watermarked)1.jpg'),(3,'dapur keluarga','upload/0_LASABUNGA_INTERIOR_SUPER_06_(watermarked)4.jpg');
+insert  into `material_sub_category`(`material_sub_category_id`,`material_sub_category_name`) values (1,'kamar tidur');
 
 UNLOCK TABLES;
 
@@ -158,13 +157,13 @@ CREATE TABLE `menu` (
   `menu_name` varchar(255) DEFAULT NULL,
   `menu_url` text,
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `menu` */
 
 LOCK TABLES `menu` WRITE;
 
-insert  into `menu`(`menu_id`,`menu_name`,`menu_url`) values (1,'Dashboard','ctr_admin'),(2,'Material','ctr_admin/barang'),(3,'Kategori','ctr_admin/category'),(4,'About','ctr_admin/about'),(5,'Sub Kategori','ctr_admin/sub_category'),(6,'Upload Detil Photo','ctr_admin/fullcategory');
+insert  into `menu`(`menu_id`,`menu_name`,`menu_url`) values (1,'Dashboard','ctr_admin'),(2,'Barang','ctr_admin/barang'),(3,'Kategori','ctr_admin/category'),(4,'About','ctr_admin/about');
 
 UNLOCK TABLES;
 
@@ -427,13 +426,13 @@ CREATE TABLE `role_menu` (
   `role_id` int(11) DEFAULT NULL,
   `menu_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_role_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `role_menu` */
 
 LOCK TABLES `role_menu` WRITE;
 
-insert  into `role_menu`(`id_role_menu`,`role_id`,`menu_id`) values (1,1,1),(2,1,2),(3,1,3),(4,1,4),(5,1,5),(6,1,6);
+insert  into `role_menu`(`id_role_menu`,`role_id`,`menu_id`) values (1,1,1),(2,1,2),(3,1,3),(4,1,4);
 
 UNLOCK TABLES;
 
@@ -455,22 +454,6 @@ CREATE TABLE `slider_big` (
 LOCK TABLES `slider_big` WRITE;
 
 insert  into `slider_big`(`slider_big_id`,`filename`,`number`,`subject`,`content`) values (1,'asset/welcome/img/ubin-1.jpg',1,'Lantai Kamar Yang Manis & Menawan','Lantai kayu terpasang dengan rapih dan bahan yang berkualitas'),(2,'asset/welcome/img/ubin-2.jpg',2,'Lantai kayu untuk pemanis kamar anda','Lantai kami mempunyai kualitas terbaik untuk membuat kamar anda terasa nyaman'),(3,'asset/welcome/img/ubin-3.jpg',3,'Lantai Perhotelan Elegan','Lantai kayu pada kamar hotel yang kami design dengan sedemikian rapih dan elegan');
-
-UNLOCK TABLES;
-
-/*Table structure for table `sub_category_photo` */
-
-DROP TABLE IF EXISTS `sub_category_photo`;
-
-CREATE TABLE `sub_category_photo` (
-  `sub_category_photo_id` int(11) NOT NULL,
-  `photo` text,
-  PRIMARY KEY (`sub_category_photo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `sub_category_photo` */
-
-LOCK TABLES `sub_category_photo` WRITE;
 
 UNLOCK TABLES;
 

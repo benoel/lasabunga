@@ -13,8 +13,9 @@
 </head>
 <body>
 	<div class="container">
-		<div class="logo">
-			<img class="responsive-img" src="assets/assets/img/logo.png" alt="">
+		<div class="logo text-center">
+			<!-- <img class="responsive-img" src="assets/assets/img/logo.png" alt=""> -->
+			<h1>LASABUNGA</h1>
 		</div>
 		<div class="menu">
 			<ul>
