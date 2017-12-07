@@ -15,6 +15,16 @@
 										<input type="text" id="project_name" name="project_name" class="form-control" required>
 									</div>
 									<div class="form-group">
+										<label for="nama_barang">Subject</label>
+										<input type="text" id="Subject" name="Subject" class="form-control" required>
+									</div>
+									<div class="form-group">
+										<label for="nama_barang">Desc</label>
+										<textarea name="desc" class="form-control"></textarea>
+									</div>
+									<?= $category; ?>
+									<?= $sub_category;?>
+									<div class="form-group">
 										<label for="project_photo">Foto Project</label>
 										<br>
 										<input class="inputfile" type="file" id="img" onchange="readURL(this);" name="berkas">

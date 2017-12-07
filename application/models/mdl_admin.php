@@ -203,7 +203,7 @@ class Mdl_Admin extends CI_Model {
 			$sql = $this->db->query($qry);
 			$output .= '<div class="form-group">
 			<label for="cetegory_id">Pilih Kategori</label>
-			<select class="form-control" id="category_id" name="category_id">';
+			<select class="form-control" id="category_id" name="category_id" required>';
 			$output .= '<option value="">Choose Category</option>';
 			if($sql->num_rows() > 0){
 				foreach($sql->result() as $row){
@@ -319,7 +319,7 @@ class Mdl_Admin extends CI_Model {
 			$sql = $this->db->query($qry);
 			$output .= '<div class="form-group">
 			<label for="sub_category_id">Pilih Sub Kategori</label>
-			<select class="form-control" id="sub_category_id" name="sub_category_id">';
+			<select class="form-control" id="sub_category_id" name="sub_category_id" required>';
 			$output .= '<option value="">Choose Sub Category</option>';
 			if($sql->num_rows() > 0){
 				foreach($sql->result() as $row){
@@ -386,7 +386,11 @@ class Mdl_Admin extends CI_Model {
 		}else{
 			$fltr = "";
 		}
-		$qry = "select * from project ".$fltr." LIMIT $start,$limit";
+		$qry = "SELECT p.project_id,p.project_name,p.photo,p.subject,p.deskripsi,mc.category_name,msc.material_sub_category_name
+					FROM project p
+					LEFT JOIN material_category mc ON mc.category_id = p.category_id
+					LEFT JOIN material_sub_category msc ON msc.`material_sub_category_id` = p.sub_category_id
+		 				".$fltr." LIMIT $start,$limit";
 
 		//echo nl2br($qry);die();
 		$sql = $this->db->query($qry);
@@ -396,6 +400,8 @@ class Mdl_Admin extends CI_Model {
 			<thead>
 			<tr>
 			<td>Project name</td>
+			<td>Kategori</td>
+			<td>Sub Kategori</td>
 			<td>Photo</td>
 			<td>Edit</td>
 			<td>Delete</td>
@@ -411,6 +417,8 @@ class Mdl_Admin extends CI_Model {
 				}
 				$output .= '<tr>
 				<td>'.ucwords($row_data->project_name).'</td>
+				<td>'.ucwords($row_data->category_name).'</td>
+				<td>'.ucwords($row_data->material_sub_category_name).'</td>
 
 				<td>'.$photo.'</td>
 				<td><a href="'.base_url("ctr_admin/viewproject/".$row_data->project_id).'" class="btn btn-warning btn-xs"><span class="lnr lnr-pencil"></span></a></td>
@@ -493,14 +501,30 @@ class Mdl_Admin extends CI_Model {
 		}
 		return $output;
 	}
+	public function option_sub_category(){
+		$qry = "select * from material_sub_category ";
+		$sql = $this->db->query($qry);
+		return $sql;
+	}
+	public function option_category(){
+		$qry = "select * from material_category ";
+		$sql = $this->db->query($qry);
+		return $sql;
+	}
 	public function updateproject($data){
-		//print_r($data);die();
+		//print_r($data);echo $data['category_id'];die();
 		$photo = $data['photo']=="" ? "photo = photo" : "photo = '".$data['photo']."'";
-		$qry = "update project
+		$qry = "
+		update project
 		set project_name = '".$data['project_name']."',
+		subject ='".$data['subject']."',
+		deskripsi ='".$data['deskripsi']."',
+		category_id ='".$data['category_id']."',
+			sub_category_id ='".$data['sub_category_id']."',
 		".$photo."
 		where project_id = '".$data['project_id']."'
 		";
+		//echo nl2br($qry);die();
 		$sql = $this->db->query($qry);
 		if($sql){
 			return true;

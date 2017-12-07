@@ -11,8 +11,46 @@
 								<form enctype="multipart/form-data" action="<?php echo base_url("ctr_admin\updateproject"); ?>" method="post">
 									<input type="text" hidden readonly="" name="project_id" value="<?= $result[0]['project_id']; ?>">
 									<div class="form-group">
-										<label for="nama_barang">Nama Sub Kategori</label>
+										<label for="nama_barang">Nama Project</label>
 										<input type="text" id="project_name" name="project_name" class="form-control" value="<?=$result[0]['project_name']; ?>" required>
+									</div>
+									<div class="form-group">
+										<label for="nama_barang">Subject</label>
+										<input type="text" id="subject" name="subject" class="form-control" value="<?=$result[0]['subject']; ?>" required>
+									</div>
+									<div class="form-group">
+										<label for="nama_barang">Desc</label>
+										<textarea name="deskripsi" class="form-control"><?= $result[0]['deskripsi']; ?></textarea>
+									</div>
+									<div class="form-group">
+										<label class="form-control">Category</label>
+										<select name="category_id" class="form-control">
+												<?php
+													foreach($category->result() as $row_cat){
+														if($row_cat == $result[0]['category_id']){
+															echo '<option value="'.$row_cat->category_id.'" selected>'.$row_cat->category_name.'</option>';
+														}else{
+															echo '<option value="'.$row_cat->category_id.'">'.$row_cat->category_name.'</option>';
+														}
+
+													}
+												?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label class="form-control">Sub Category</label>
+										<select name="sub_category_id" class="form-control">
+												<?php
+													foreach($sub_category->result() as $row_sub){
+														if($row_sub->material_sub_category_id == $result[0]['sub_category_id']){
+															echo '<option value="'.$row_sub->material_sub_category_id.'" selected>'.$row_sub->material_sub_category_name.'</option>';
+														}else{
+															echo '<option value="'.$row_sub->material_sub_category_id.'">'.$row_sub->material_sub_category_name.'</option>';
+														}
+
+													}
+												?>
+										</select>
 									</div>
 									<div class="form-group">
 										<label for="nama_barang">Foto Kategori</label>

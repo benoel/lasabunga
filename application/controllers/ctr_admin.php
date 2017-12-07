@@ -10,7 +10,7 @@ class Ctr_Admin extends CI_Controller {
 		$this->load->helper(array('captcha','url'));
 
 	}
-	
+
 	public function index($notif=NULL)
 	{
 		if(!empty($this->session->userdata("email"))){
@@ -559,7 +559,8 @@ class Ctr_Admin extends CI_Controller {
 		if($this->session->userdata("email")==""){
 			redirect('ctr_admin/index');
 		}else{
-			$result_menu = array("menu" => $this->session->userdata("menu"));
+			$result_menu = array("menu" => $this->session->userdata("menu"),"category"=> $this->mdl_admin->get_category("","",""),
+			"sub_category"=>$this->mdl_admin->get_sub_category("","",""));
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view("admin/createproject");
 			$this->load->view('admin/footer');
@@ -572,7 +573,8 @@ class Ctr_Admin extends CI_Controller {
 			$id = $this->uri->segment(3);
 
 			$result_menu = array("menu" => $this->session->userdata("menu"));
-			$result_view = array("result" => $this->mdl_admin->get_view_project($id));
+			$result_view = array("result" => $this->mdl_admin->get_view_project($id),"category"=> $this->mdl_admin->option_category(),
+			"sub_category"=>$this->mdl_admin->option_sub_category());
 
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view('admin/viewproject',$result_view);
@@ -598,9 +600,13 @@ class Ctr_Admin extends CI_Controller {
 			}else{
 				$photo = "";
 			}
-
+		//print_r($this->input->post());die();
 			$data = array(	"project_id" => $this->input->post("project_id"),
-							"project_name" => $this->input->post("project_name"),
+			"project_name" => $this->input->post("project_name"),
+								"subject" => $this->input->post("subject"),
+							"deskripsi" => $this->input->post("deskripsi"),
+							"category_id" => $this->input->post("category_id"),
+							"sub_category_id" => $this->input->post("sub_category_id"),
 							"photo" => $photo
 						);
 
