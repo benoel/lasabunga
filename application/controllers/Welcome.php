@@ -35,7 +35,7 @@ class Welcome extends CI_Controller {
 		$data['md'] = $this->db->get('material_detail');
 		$data['category'] = $this->db->get('material_category');
 		$data['subcategory'] = $this->db->get('material_sub_category');
-		
+
 		 //config for bootstrap pagination class integration
 		$config['full_tag_open'] = '<ul class="pagination">';
 		$config['full_tag_close'] = '</ul>';

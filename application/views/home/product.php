@@ -8,11 +8,11 @@
 				<label for="category">Category</label>
 				<select class="form-control" id="category">
 					<option disabled selected>Select Category</option>
-					<?php 
+					<?php
 					foreach ($category->result() as $row){
 						?>
 						<option value="<?php echo $row->category_id ?>"><?php echo $row->category_name ?></option>
-						<?php 
+						<?php
 					} ?>
 				</select>
 			</div>
@@ -20,11 +20,11 @@
 				<label for="subcategory">Sub Category</label>
 				<select class="form-control" id="subcategory">
 					<option disabled selected>Select Subcategory</option>
-					<?php 
+					<?php
 					foreach ($subcategory->result() as $row){
 						?>
 						<option value="<?php echo $row->material_sub_category_id ?>"><?php echo $row->material_sub_category_name ?></option>
-						<?php 
+						<?php
 					} ?>
 				</select>
 			</div>
@@ -38,7 +38,7 @@
 	</div>
 	<div class="col-md-10">
 		<div class="row">
-			<?php 
+			<?php
 			foreach ($md->result() as $row){
 				?>
 
@@ -50,7 +50,7 @@
 						</a>
 					</div>
 				</div>
-				<?php 
+				<?php
 			} ?>
 		</div>
 	</div>

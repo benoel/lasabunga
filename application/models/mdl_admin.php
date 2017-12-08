@@ -479,6 +479,7 @@ class Mdl_Admin extends CI_Model {
 		}
 		return $output;
 	}
+
 	public function get_project_count($filter){
 		if($filter != ""){
 			$fltr = "where project_name like '%".$filter."%'";
