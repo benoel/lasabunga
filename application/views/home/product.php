@@ -3,34 +3,36 @@
 	<h4 class="title text-center">Our Product</h4>
 	<br>
 	<div class="col-md-2">
-		<form class="">
+		<p class="title" style="font-size: 16px;">Filter</p>
+		<div class="divider"></div>
+		<form class="" action="<?php echo base_url('product') ?>" method="GET">
 			<div class="form-group">
 				<label for="category">Category</label>
-				<select class="form-control" id="category">
+				<select name="filter[category]" class="form-control" id="category">
 					<option disabled selected>Select Category</option>
 					<?php
 					foreach ($category->result() as $row){
 						?>
-						<option value="<?php echo $row->category_id ?>"><?php echo $row->category_name ?></option>
+						<option <?php echo $category_id == $row->category_id ? 'selected' : '' ?> value="<?php echo $row->category_id ?>"><?php echo $row->category_name ?></option>
 						<?php
 					} ?>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="subcategory">Sub Category</label>
-				<select class="form-control" id="subcategory">
+				<select name="filter[subcategory]" class="form-control" id="subcategory">
 					<option disabled selected>Select Subcategory</option>
 					<?php
 					foreach ($subcategory->result() as $row){
 						?>
-						<option value="<?php echo $row->material_sub_category_id ?>"><?php echo $row->material_sub_category_name ?></option>
+						<option <?php echo $sub_category_id == $row->material_sub_category_id ? 'selected' : '' ?> value="<?php echo $row->material_sub_category_id ?>"><?php echo $row->material_sub_category_name ?></option>
 						<?php
 					} ?>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="searcg">Search</label>
-				<input type="text" placeholder="Search" id="search" class="form-control">
+				<input type="text" value="<?php echo $name ?>" name="filter[name]" placeholder="Search" id="search" class="form-control">
 			</div>
 			<button type="submit" class="btn btn-default">Submit</button>
 		</form>
@@ -38,20 +40,29 @@
 	</div>
 	<div class="col-md-10">
 		<div class="row">
+			<?php if ($total == 0): ?>
+				<h3 class="text-center">Maaf kata kunci yang anda cari tidak ditemukan.</h3>
+			<?php endif ?>
 			<?php
-			foreach ($md->result() as $row){
+			foreach ($results->result() as $row){
 				?>
 
 				<div class="col-md-4">
 					<div class="card-product">
-						<a class="name" href="<?php echo base_url('product/show/').$row->material_detail_id ?>"><?php echo $row->material_name ?></a>
-						<a href="<?php echo base_url('product/show/').$row->material_detail_id ?>">
+						<a class="name" href="<?php echo base_url('product/show/').$row->project_id ?>"><?php echo $row->project_name ?></a>
+						<a href="<?php echo base_url('product/show/').$row->project_id ?>">
 							<img src="<?php echo base_url().$row->photo ?>" class="responsive-img" alt="">
 						</a>
 					</div>
 				</div>
 				<?php
 			} ?>
+		</div>
+		<div class="pag text-center">
+			<?= $pagination ? $pagination : ""; ?>
+			<?php if ($total == 0): ?>
+				<a href="<?php echo base_url('product') ?>" class="btn btn-default">Back</a>
+			<?php endif ?>
 		</div>
 	</div>
 </div>

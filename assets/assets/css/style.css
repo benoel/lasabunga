@@ -61,6 +61,12 @@ ul{
 	margin: 0;
 	padding: 0;
 }
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
 
 
 /*MENU*/
@@ -156,4 +162,18 @@ ul{
 	border-color: #333;
 	outline: 0;
 	box-shadow: none;
+}
+
+/*PAGINATION*/
+.pagination li a{
+	color: #333;
+}
+.pagination li.active a{
+	border-color: #eee;
+	background-color: #D4CCC6;
+}
+.pagination li.active a:hover{
+	color: #333;
+	border-color: #D4CCC6;
+	background-color: #eee;
 }

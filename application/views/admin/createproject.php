@@ -11,16 +11,16 @@
 								<form enctype="multipart/form-data" action="<?php echo base_url("ctr_admin\insertproject"); ?>" method="post">
 
 									<div class="form-group">
-										<label for="nama_barang">Nama Project</label>
-										<input type="text" id="project_name" name="project_name" class="form-control" required>
+										<label for="nama_project">Nama Project</label>
+										<input type="text" id="nama_project" name="project_name" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label for="nama_barang">Subject</label>
-										<input type="text" id="Subject" name="Subject" class="form-control" required>
+										<label for="subject">Subject</label>
+										<input type="text" id="subject" name="subject" class="form-control" required>
 									</div>
 									<div class="form-group">
-										<label for="nama_barang">Desc</label>
-										<textarea name="desc" class="form-control"></textarea>
+										<label for="desc">Desc</label>
+										<textarea name="desc" id="desc" class="form-control"></textarea>
 									</div>
 									<?= $category; ?>
 									<?= $sub_category;?>
@@ -31,7 +31,7 @@
 										<label class="btn btn-info labelImg" for="img">Upload Photo</label>
 
 										<script type="text/javascript">
-										function readURL(input) {
+											function readURL(input) {
 												if (input.files && input.files[0]) {
 													var reader = new FileReader();
 													reader.onload = function (e) {

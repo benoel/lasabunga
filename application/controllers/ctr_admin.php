@@ -36,9 +36,9 @@ class Ctr_Admin extends CI_Controller {
 				if($get_data){
 					foreach($get_data->result() as $data_auth){
 						$sess_array = array("name" => ucwords($data_auth->name),
-											"email" => ucwords($data_auth->email),
-											"menu" => $this->menu($email)
-											);
+							"email" => ucwords($data_auth->email),
+							"menu" => $this->menu($email)
+						);
 					}
 					//print_r($this->menu($email));die();
 
@@ -73,42 +73,42 @@ class Ctr_Admin extends CI_Controller {
 		if($this->session->userdata("email")==""){
 			redirect('ctr_admin/index');
 		}else{
-		$filter = $this->input->get("material_name");
+			$filter = $this->input->get("material_name");
 		//echo $filter;die();
-		$config['base_url'] = site_url('ctr_admin/barang');
-        $config['total_rows'] = $this->mdl_admin->material_detail_count($filter);
-        $config['per_page'] = "5";
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
+			$config['base_url'] = site_url('ctr_admin/barang');
+			$config['total_rows'] = $this->mdl_admin->material_detail_count($filter);
+			$config['per_page'] = "5";
+			$config["uri_segment"] = 3;
+			$choice = $config["total_rows"] / $config["per_page"];
+			$config["num_links"] = floor($choice);
 
         //config for bootstrap pagination class integration
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+			$config['full_tag_open'] = '<ul class="pagination">';
+			$config['full_tag_close'] = '</ul>';
+			$config['first_link'] = false;
+			$config['last_link'] = false;
+			$config['first_tag_open'] = '<li>';
+			$config['first_tag_close'] = '</li>';
+			$config['prev_link'] = '&laquo';
+			$config['prev_tag_open'] = '<li class="prev">';
+			$config['prev_tag_close'] = '</li>';
+			$config['next_link'] = '&raquo';
+			$config['next_tag_open'] = '<li>';
+			$config['next_tag_close'] = '</li>';
+			$config['last_tag_open'] = '<li>';
+			$config['last_tag_close'] = '</li>';
+			$config['cur_tag_open'] = '<li class="active"><a href="#">';
+			$config['cur_tag_close'] = '</a></li>';
+			$config['num_tag_open'] = '<li>';
+			$config['num_tag_close'] = '</li>';
 
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+			$this->pagination->initialize($config);
+			$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-		$result_menu = array("menu" => $this->session->userdata("menu"));
-		$result_barang = array("pagination"=>$this->pagination->create_links(),
-								"barang" => $this->mdl_admin->get_barang($config["per_page"], $data['page'],$filter),
-								"total"=> $this->mdl_admin->material_detail_count($filter));
+			$result_menu = array("menu" => $this->session->userdata("menu"));
+			$result_barang = array("pagination"=>$this->pagination->create_links(),
+				"barang" => $this->mdl_admin->get_barang($config["per_page"], $data['page'],$filter),
+				"total"=> $this->mdl_admin->material_detail_count($filter));
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view('admin/barang',$result_barang);
 			$this->load->view('admin/footer');
@@ -148,11 +148,11 @@ class Ctr_Admin extends CI_Controller {
 			}
 
 			$data = array(	"material_detail_id" => $this->input->post("material_detail_id"),
-							"material_name" => $this->input->post("material_name"),
-							"material_subject" => $this->input->post("material_subject"),
-							"material_desc" => $this->input->post("material_desc"),
-							"photo" => $photo
-						);
+				"material_name" => $this->input->post("material_name"),
+				"material_subject" => $this->input->post("material_subject"),
+				"material_desc" => $this->input->post("material_desc"),
+				"photo" => $photo
+			);
 
 			if($this->mdl_admin->updatebarang($data)==false){
 				echo "Update Data Gagal, silahkan coba kembali";die();
@@ -192,68 +192,68 @@ class Ctr_Admin extends CI_Controller {
 			$output['message'] = "";
 			$this->upload->do_upload('berkas');
 
-				$result = $this->upload->data();
-				if($result['file_name']){
-					$photo = "upload/".$result['file_name'];
-				}else{
-					$photo = "";
-				}
+			$result = $this->upload->data();
+			if($result['file_name']){
+				$photo = "upload/".$result['file_name'];
+			}else{
+				$photo = "";
+			}
 
-				$data = array(	"material_name" => $this->input->post("material_name"),
-								"material_subject" => $this->input->post("material_subject"),
-								"material_desc" => $this->input->post("material_desc"),
-								"photo" => $photo
-							);
+			$data = array(	"material_name" => $this->input->post("material_name"),
+				"material_subject" => $this->input->post("material_subject"),
+				"material_desc" => $this->input->post("material_desc"),
+				"photo" => $photo
+			);
 
-				$insert = $this->mdl_admin->insert('material_detail',$data);
+			$insert = $this->mdl_admin->insert('material_detail',$data);
 
-				if($insert == false){
-					echo "Tambah Material Gagal";die();
-				}else{
-					redirect("ctr_admin/barang");
-				}
+			if($insert == false){
+				echo "Tambah Material Gagal";die();
+			}else{
+				redirect("ctr_admin/barang");
+			}
 		}
 	}
 	public function category(){
 		$filter = $this->input->get("category_name");
 		//echo $filter;die();
 		$config['base_url'] = site_url('ctr_admin/category');
-        $config['total_rows'] = $this->mdl_admin->material_category_count($filter);
-        $config['per_page'] = "5";
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
+		$config['total_rows'] = $this->mdl_admin->material_category_count($filter);
+		$config['per_page'] = "5";
+		$config["uri_segment"] = 3;
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
 
         //config for bootstrap pagination class integration
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="prev">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
 
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 		$result_menu = array("menu" => $this->session->userdata("menu"));
 		$result = array("pagination"=>$this->pagination->create_links(),
-								"result" => $this->mdl_admin->get_category($config["per_page"], $data['page'],$filter),
-								"total"=> $this->mdl_admin->material_category_count($filter));
-			$this->load->view('admin/header',$result_menu);
-			$this->load->view('admin/category',$result);
-			$this->load->view('admin/footer');
+			"result" => $this->mdl_admin->get_category($config["per_page"], $data['page'],$filter),
+			"total"=> $this->mdl_admin->material_category_count($filter));
+		$this->load->view('admin/header',$result_menu);
+		$this->load->view('admin/category',$result);
+		$this->load->view('admin/footer');
 	}
 	public function viewcategory(){
 		if($this->session->userdata("email")==""){
@@ -289,9 +289,9 @@ class Ctr_Admin extends CI_Controller {
 			}
 
 			$data = array(	"category_id" => $this->input->post("category_id"),
-							"category_name" => $this->input->post("category_name"),
-							"photo" => $photo
-						);
+				"category_name" => $this->input->post("category_name"),
+				"photo" => $photo
+			);
 
 			if($this->mdl_admin->updatecategory($data)==false){
 				echo "Update Data Gagal, silahkan coba kembali";die();
@@ -332,66 +332,66 @@ class Ctr_Admin extends CI_Controller {
 			$output['message'] = "";
 			$this->upload->do_upload('berkas');
 
-				$result = $this->upload->data();
-				if($result['file_name']){
-					$photo = "upload/".$result['file_name'];
-				}else{
-					$photo = "";
-				}
+			$result = $this->upload->data();
+			if($result['file_name']){
+				$photo = "upload/".$result['file_name'];
+			}else{
+				$photo = "";
+			}
 
-				$data = array(	"category_name" => $this->input->post("category_name"),
-								"photo" => $photo
-							);
+			$data = array(	"category_name" => $this->input->post("category_name"),
+				"photo" => $photo
+			);
 
-				$insert = $this->mdl_admin->insert('material_category',$data);
+			$insert = $this->mdl_admin->insert('material_category',$data);
 
-				if($insert == false){
-					echo "Tambah Kategori Gagal";die();
-				}else{
-					redirect("ctr_admin/category");
-				}
+			if($insert == false){
+				echo "Tambah Kategori Gagal";die();
+			}else{
+				redirect("ctr_admin/category");
+			}
 		}
 	}
 	public function sub_category(){
 		$filter = $this->input->get("sub_category_name");
 		//echo $filter;die();
 		$config['base_url'] = site_url('ctr_admin/sub_category');
-        $config['total_rows'] = $this->mdl_admin->material_sub_category_count($filter);
-        $config['per_page'] = "5";
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
+		$config['total_rows'] = $this->mdl_admin->material_sub_category_count($filter);
+		$config['per_page'] = "5";
+		$config["uri_segment"] = 3;
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
 
         //config for bootstrap pagination class integration
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="prev">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
 
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 		$result_menu = array("menu" => $this->session->userdata("menu"));
 		$result = array("pagination"=>$this->pagination->create_links(),
-								"result" => $this->mdl_admin->get_sub_category($config["per_page"], $data['page'],$filter),
-								"total"=> $this->mdl_admin->material_sub_category_count($filter));
-			$this->load->view('admin/header',$result_menu);
-			$this->load->view('admin/subcategory',$result);
-			$this->load->view('admin/footer');
+			"result" => $this->mdl_admin->get_sub_category($config["per_page"], $data['page'],$filter),
+			"total"=> $this->mdl_admin->material_sub_category_count($filter));
+		$this->load->view('admin/header',$result_menu);
+		$this->load->view('admin/subcategory',$result);
+		$this->load->view('admin/footer');
 	}
 	public function viewsubcategory(){
 		if($this->session->userdata("email")==""){
@@ -428,9 +428,9 @@ class Ctr_Admin extends CI_Controller {
 			}
 
 			$data = array(	"material_sub_category_id" => $this->input->post("material_sub_category_id"),
-							"material_sub_category_name" => $this->input->post("material_sub_category_name"),
-							"photo" => $photo
-						);
+				"material_sub_category_name" => $this->input->post("material_sub_category_name"),
+				"photo" => $photo
+			);
 
 			if($this->mdl_admin->updatesubcategory($data)==false){
 				echo "Update Data Gagal, silahkan coba kembali";die();
@@ -460,24 +460,24 @@ class Ctr_Admin extends CI_Controller {
 			$output['message'] = "";
 			$this->upload->do_upload('berkas');
 
-				$result = $this->upload->data();
-				if($result['file_name']){
-					$photo = "upload/".$result['file_name'];
-				}else{
-					$photo = "";
-				}
+			$result = $this->upload->data();
+			if($result['file_name']){
+				$photo = "upload/".$result['file_name'];
+			}else{
+				$photo = "";
+			}
 
-				$data = array(	"material_sub_category_name" => $this->input->post("material_sub_category_name"),
-								"photo" => $photo
-							);
+			$data = array(	"material_sub_category_name" => $this->input->post("material_sub_category_name"),
+				"photo" => $photo
+			);
 
-				$insert = $this->mdl_admin->insert('material_sub_category',$data);
+			$insert = $this->mdl_admin->insert('material_sub_category',$data);
 
-				if($insert == false){
-					echo "Tambah Kategori Gagal";die();
-				}else{
-					redirect("ctr_admin/sub_category");
-				}
+			if($insert == false){
+				echo "Tambah Kategori Gagal";die();
+			}else{
+				redirect("ctr_admin/sub_category");
+			}
 		}
 	}
 
@@ -486,42 +486,42 @@ class Ctr_Admin extends CI_Controller {
 		$filter = $this->input->get("project_name");
 		//echo $filter;die();
 		$config['base_url'] = site_url('ctr_admin/project');
-        $config['total_rows'] = $this->mdl_admin->get_project_count($filter);
-        $config['per_page'] = "5";
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
+		$config['total_rows'] = $this->mdl_admin->get_project_count($filter);
+		$config['per_page'] = "5";
+		$config["uri_segment"] = 3;
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
 
         //config for bootstrap pagination class integration
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="prev">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
 
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
 		$result_menu = array("menu" => $this->session->userdata("menu"));
 		$result = array("pagination"=>$this->pagination->create_links(),
-								"result" => $this->mdl_admin->get_project($config["per_page"], $data['page'],$filter),
-								"total"=> $this->mdl_admin->get_project_count($filter));
-			$this->load->view('admin/header',$result_menu);
-			$this->load->view('admin/project',$result);
-			$this->load->view('admin/footer');
+			"result" => $this->mdl_admin->get_project($config["per_page"], $data['page'],$filter),
+			"total"=> $this->mdl_admin->get_project_count($filter));
+		$this->load->view('admin/header',$result_menu);
+		$this->load->view('admin/project',$result);
+		$this->load->view('admin/footer');
 	}
 
 	public function insertproject(){
@@ -535,24 +535,28 @@ class Ctr_Admin extends CI_Controller {
 			$output['message'] = "";
 			$this->upload->do_upload('berkas');
 
-				$result = $this->upload->data();
-				if($result['file_name']){
-					$photo = "upload/".$result['file_name'];
-				}else{
-					$photo = "";
-				}
+			$result = $this->upload->data();
+			if($result['file_name']){
+				$photo = "upload/".$result['file_name'];
+			}else{
+				$photo = "";
+			}
 
-				$data = array(	"project_name" => $this->input->post("project_name"),
-								"photo" => $photo
-							);
+			$data = array(	"project_name" => $this->input->post("project_name"),
+				"subject" => $this->input->post("subject"),
+				"deskripsi" => $this->input->post("desc"),
+				"category_id" => $this->input->post("category_id"),
+				"sub_category_id" => $this->input->post("sub_category_id"),
+				"photo" => $photo
+			);
 
-				$insert = $this->mdl_admin->insert('project',$data);
+			$insert = $this->mdl_admin->insert('project',$data);
 
-				if($insert == false){
-					echo "Tambah Kategori Gagal";die();
-				}else{
-					redirect("ctr_admin/project");
-				}
+			if($insert == false){
+				echo "Tambah Kategori Gagal";die();
+			}else{
+				redirect("ctr_admin/project");
+			}
 		}
 	}
 	public function createproject(){
@@ -560,7 +564,7 @@ class Ctr_Admin extends CI_Controller {
 			redirect('ctr_admin/index');
 		}else{
 			$result_menu = array("menu" => $this->session->userdata("menu"),"category"=> $this->mdl_admin->get_category("","",""),
-			"sub_category"=>$this->mdl_admin->get_sub_category("","",""));
+				"sub_category"=>$this->mdl_admin->get_sub_category("","",""));
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view("admin/createproject");
 			$this->load->view('admin/footer');
@@ -574,7 +578,7 @@ class Ctr_Admin extends CI_Controller {
 
 			$result_menu = array("menu" => $this->session->userdata("menu"));
 			$result_view = array("result" => $this->mdl_admin->get_view_project($id),"category"=> $this->mdl_admin->option_category(),
-			"sub_category"=>$this->mdl_admin->option_sub_category());
+				"sub_category"=>$this->mdl_admin->option_sub_category());
 
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view('admin/viewproject',$result_view);
@@ -602,13 +606,13 @@ class Ctr_Admin extends CI_Controller {
 			}
 		//print_r($this->input->post());die();
 			$data = array(	"project_id" => $this->input->post("project_id"),
-			"project_name" => $this->input->post("project_name"),
-								"subject" => $this->input->post("subject"),
-							"deskripsi" => $this->input->post("deskripsi"),
-							"category_id" => $this->input->post("category_id"),
-							"sub_category_id" => $this->input->post("sub_category_id"),
-							"photo" => $photo
-						);
+				"project_name" => $this->input->post("project_name"),
+				"subject" => $this->input->post("subject"),
+				"deskripsi" => $this->input->post("deskripsi"),
+				"category_id" => $this->input->post("category_id"),
+				"sub_category_id" => $this->input->post("sub_category_id"),
+				"photo" => $photo
+			);
 
 			if($this->mdl_admin->updateproject($data)==false){
 				echo "Update Data Gagal, silahkan coba kembali";die();
@@ -625,7 +629,7 @@ class Ctr_Admin extends CI_Controller {
 			if($this->mdl_admin->deleteproject($id)==false){
 				echo "Error";
 			}else{
-					redirect('ctr_admin/project');
+				redirect('ctr_admin/project');
 			}
 
 		}
@@ -639,7 +643,7 @@ class Ctr_Admin extends CI_Controller {
 		}else{
 			$result_menu = array("menu" => $this->session->userdata("menu"));
 			$result = array("category"=> $this->mdl_admin->get_category("","",""),
-											"sub_category"=>$this->mdl_admin->get_sub_category("","",""));
+				"sub_category"=>$this->mdl_admin->get_sub_category("","",""));
 			//print_r($result_category);die();
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view("admin/createfullcategory",$result);
@@ -650,46 +654,46 @@ class Ctr_Admin extends CI_Controller {
 		$filter = $this->input->post("project_name");
 		//echo $filter;die();
 		$config['base_url'] = site_url('ctr_admin/createfullcategory');
-        $config['total_rows'] = $this->mdl_admin->get_project_count($filter);
-        $config['per_page'] = "20";
-        $config["uri_segment"] = 3;
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
+		$config['total_rows'] = $this->mdl_admin->get_project_count($filter);
+		$config['per_page'] = "20";
+		$config["uri_segment"] = 3;
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = floor($choice);
 
         //config for bootstrap pagination class integration
-        $config['full_tag_open'] = '<ul class="pagination">';
-        $config['full_tag_close'] = '</ul>';
-        $config['first_link'] = false;
-        $config['last_link'] = false;
-        $config['first_tag_open'] = '<li>';
-        $config['first_tag_close'] = '</li>';
-        $config['prev_link'] = '&laquo';
-        $config['prev_tag_open'] = '<li class="prev">';
-        $config['prev_tag_close'] = '</li>';
-        $config['next_link'] = '&raquo';
-        $config['next_tag_open'] = '<li>';
-        $config['next_tag_close'] = '</li>';
-        $config['last_tag_open'] = '<li>';
-        $config['last_tag_close'] = '</li>';
-        $config['cur_tag_open'] = '<li class="active"><a href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-        $config['num_tag_open'] = '<li>';
-        $config['num_tag_close'] = '</li>';
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="prev">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
 
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-				$result_menu = array("menu" => $this->session->userdata("menu"));
-				$result = array("pagination"=>$this->pagination->create_links(),
-										"result" => $this->mdl_admin->get_project_full($config["per_page"], $data['page'],$filter),
-										"total"=> '<div class="form-group"><label class="form-control">Total Project :'.$this->mdl_admin->get_project_count($filter).'</label></div>',
-										"category"=> $this->mdl_admin->get_category("","",""),
-										"sub_category"=>$this->mdl_admin->get_sub_category("","","")
-							);
+		$result_menu = array("menu" => $this->session->userdata("menu"));
+		$result = array("pagination"=>$this->pagination->create_links(),
+			"result" => $this->mdl_admin->get_project_full($config["per_page"], $data['page'],$filter),
+			"total"=> '<div class="form-group"><label class="form-control">Total Project :'.$this->mdl_admin->get_project_count($filter).'</label></div>',
+			"category"=> $this->mdl_admin->get_category("","",""),
+			"sub_category"=>$this->mdl_admin->get_sub_category("","","")
+		);
 
-				$this->load->view('admin/header',$result_menu);
-				$this->load->view("admin/createfullcategory",$result);
-				$this->load->view('admin/footer');
+		$this->load->view('admin/header',$result_menu);
+		$this->load->view("admin/createfullcategory",$result);
+		$this->load->view('admin/footer');
 	}
 	public function insertfullcatgory(){
 		if($this->session->userdata("email")==""){
@@ -708,10 +712,10 @@ class Ctr_Admin extends CI_Controller {
 				$i = 0;
 				for($i;$i<$count_pilihan;$i++){
 					$data[$i] = array("category_id"=>$this->input->post("category_id"),
-														"sub_category_id" => $this->input->post("sub_category_id"),
-														"user_id" => $this->session->userdata("name"),
-														"project_id" => $this->input->post("pilih")[$i]
-														);
+						"sub_category_id" => $this->input->post("sub_category_id"),
+						"user_id" => $this->session->userdata("name"),
+						"project_id" => $this->input->post("pilih")[$i]
+					);
 				}
 				foreach($this->mdl_admin->insertfullcatgory("material_full_category",$data) as $row){
 					echo $row;
@@ -727,8 +731,8 @@ class Ctr_Admin extends CI_Controller {
 		}else{
 			$result_menu = array("menu" => $this->session->userdata("menu"));
 			$result = array(
-									"result" => $this->mdl_admin->get_about()
-						);
+				"result" => $this->mdl_admin->get_about()
+			);
 
 			$this->load->view('admin/header',$result_menu);
 			$this->load->view("admin/about",$result);
@@ -757,9 +761,9 @@ class Ctr_Admin extends CI_Controller {
 
 
 			$data = array(	"our_company_content_id" => $this->input->post("our_company_content_id"),
-											"subject_content" => $this->input->post("subject_content"),
-											"body_content" => $this->input->post("body_content")
-						);
+				"subject_content" => $this->input->post("subject_content"),
+				"body_content" => $this->input->post("body_content")
+			);
 
 			if($this->mdl_admin->updateabout($data)==false){
 				echo "Update Data Gagal, silahkan coba kembali";die();
@@ -776,8 +780,8 @@ class Ctr_Admin extends CI_Controller {
 
 
 			$data = array(	"subject_content" => $this->input->post("subject_content"),
-											"body_content" => $this->input->post("body_content")
-						);
+				"body_content" => $this->input->post("body_content")
+			);
 
 			if($this->mdl_admin->insert('our_company_content',$data)==false){
 				echo "Update Data Gagal, silahkan coba kembali";die();

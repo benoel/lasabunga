@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 // CUSTOM URL
 $route['(product)'] = 'welcome/product';
+$route['(product)/(:any)'] = 'welcome/product';
 $route['(product)/(show)/(:any)'] = 'welcome/show_product/$3';
 
 $route['(about)'] = 'welcome/about';

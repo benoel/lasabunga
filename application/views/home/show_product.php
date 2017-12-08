@@ -1,6 +1,6 @@
 
 <div class="content row">
-	<h4 class="title text-center"><?php echo $md[0]['material_name'] ?></h4>
+	<h4 class="title text-center"><?php echo $md[0]['project_name'] ?></h4>
 	<br>
 	<div class="divider"></div>
 	<div class="col-md-12 detail">
@@ -9,7 +9,7 @@
 		</div>
 		<h4 style="text-decoration: underline; ">Description</h4>
 		<p>
-			<?php echo $md[0]['material_desc'] ?>
+			<?php echo $md[0]['deskripsi'] ?>
 		</p>
 	</div>
 	<div class="text-center">

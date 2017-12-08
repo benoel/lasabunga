@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="<?=base_url(); ?>assets/css/main.css">
 	<!-- FOR DEMO PURPOSES ONLY. You should remove this in your project -->
 	<link rel="stylesheet" href="<?=base_url(); ?>assets/css/demo.css">
+	<link rel="stylesheet" href="<?=base_url(); ?>assets/css/admin.css">
 	<!-- GOOGLE FONTS -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700" rel="stylesheet">
 	<!-- ICONS -->
@@ -92,16 +93,16 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-					<?php
+						<?php
 						if($menu){
 							foreach($menu as $row_menu){
 								?>
-									<li><a href="<?= base_url($row_menu['menu_url']) ;?>" ><span><?= $row_menu['menu_name']; ?></span></a></li>
+								<li><a href="<?= base_url($row_menu['menu_url']) ;?>" ><span><?= $row_menu['menu_name']; ?></span></a></li>
 								<?php
 							}
 
 						}
-					?>
+						?>
 
 
 					</ul>
